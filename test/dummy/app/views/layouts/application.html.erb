@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dummy</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag 'jquery.tools.min.js' %><%# includes jQuery 1.6.4 %>
+  <%= javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.17/jquery-ui.min.js' %>
+  <%= csrf_meta_tags %>
+  <% if logged_in? %>
+    <%= javascript_include_tag 'ckeditor/ckeditor' %>
+    <%= javascript_include_tag '/rain/javascripts/rain' %>
+    <%= stylesheet_link_tag 'rain' %>
+  <% end %>
+</head>
+<body>
+
+<%= yield %>
+<%= puddle %>
+</body>
+</html>

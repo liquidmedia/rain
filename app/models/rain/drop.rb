@@ -1,0 +1,20 @@
+module Rain
+  class Drop < ActiveRecord::Base
+    versioned
+  
+    scope :drops, where('type != ?', 'Rain::Cloud')
+    scope :clouds, where('type = ?', 'Rain::Cloud')
+    
+    validates_uniqueness_of :name
+
+    alias :uri :to_s
+    
+    def uri=(new_uri)
+      self.name = new_uri
+    end
+  
+    def to_s
+      name
+    end
+  end
+end

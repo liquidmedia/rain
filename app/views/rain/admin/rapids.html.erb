@@ -1,0 +1,7 @@
+<h2>Waterfall</h2>
+
+<ol>
+  <%= waterfall @rapids, {:show_edit=>true, :element_tag => "li"} %>
+</ol>
+
+<%= link_to "New Rapid",[:new_rain_rapid]%> | <%= link_to 'Back', :back %>

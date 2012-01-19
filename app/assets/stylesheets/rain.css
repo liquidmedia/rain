@@ -1,0 +1,38 @@
+div#puddle {
+  background-image:url(rain/background.png);
+  width:640px;
+  height:480px;   
+  display:none;
+  color: #fff;
+  padding:55px;
+}
+
+div#puddle div.close {
+  background-image:url(rain/close.png);
+  position:absolute;
+  right:5px;
+  top:5px;
+  cursor:pointer;
+  height:28px;
+  width:28px;
+}
+
+.nav .current {
+  background: #ccc;
+}
+
+form.edit_rain_drop a {
+  color: #2B88D3;
+  text-decoration: none;
+}
+
+form.edit_rain_drop a:hover {
+  text-decoration: underline;
+}
+
+#puddle h1 {
+  font-size: 18px;
+  margin: 0 0 0.3em;
+  color: #DDD;
+}
+

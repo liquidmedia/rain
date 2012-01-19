@@ -1,0 +1,20 @@
+<% form_for form do |f| %>
+  Name: 
+  <%=f.text_field :name %><br />
+  Link: 
+  <%=f.text_field :link %><br />
+  Title: 
+  <%=f.text_area :title, :rows=> 3 %><br />
+  Parent:
+  <%=f.select :parent_id, Rain::Rapid.all.collect{|r| [r, r.id]},:include_blank=>true%><br />
+  Position:
+  <%= f.text_field :position, :maxlength => 3%><br />
+  CSS Class:
+  <%=f.text_field :classes %><br />
+  Require User?:
+  <%=f.check_box :user_only %><br />
+  Require Admin?:
+  <%=f.check_box :admin_only %><br />
+  <br />
+  <%= f.submit "Save" %>
+<% end%>

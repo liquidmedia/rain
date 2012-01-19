@@ -1,0 +1,9 @@
+<%= raw drop.content %>
+
+<% if can_edit_drop?(drop.id)
+  if drop.type.blank? %>
+    [<%= link_to "Edit", [:edit, drop],:rel=>'#puddle',:class=>"edit" %>]
+  <% else %>
+    [<%= link_to "Edit", edit_rain_cloud_path(drop),:rel=>'#puddle',:class=>"edit" %>]
+  <% end
+end %>

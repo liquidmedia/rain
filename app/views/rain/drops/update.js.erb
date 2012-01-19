@@ -1,0 +1,5 @@
+jQuery('#puddle .close').trigger('click');
+jQuery('#puddle .contentWrap').html('');
+jQuery('.rain_drop.<%=@drop.id%>').effect('highlight',{},1500);
+jQuery('.rain_drop.<%=@drop.id%>').html('<%= escape_javascript(render @drop) %>')
+

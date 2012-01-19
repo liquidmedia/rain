@@ -1,0 +1,27 @@
+<h2>Drops</h2>
+<strong>Page Segments</strong>
+<ul>
+  <% header = ''%>
+  <% @drops.each do |drop|
+    if header != drop.name.split('_').first 
+      header = drop.name.split('_').first%>
+      <h2><%= header %></h2>
+    <% end %>
+    <li><%= drop.name %> [<%= link_to :edit, drop,:rel=>'#puddle',:class=>"edit"  %>] [<%= link_to :delete, drop, :method=>:delete,:confirm=>'Are you sure you want to delete this drop?' %>]</li>
+  <% end %>
+</ul>
+
+<h2>Clouds</h2>
+<strong>Full Pages</strong>
+<ul>
+  <% @clouds.each do |drop|
+    if header != drop.name.split('/').first 
+      header = drop.name.split('/').first%>
+      <h2><%= header %></h2>
+    <% end %>
+    <li><%= link_to(drop.name,"/#{drop.name}") %> [<%= link_to :edit, drop,:rel=>'#puddle',:class=>"edit"  %>] [<%= link_to :delete, drop, :method=>:delete,:confirm=>'Are you sure you want to delete this drop?' %>]</li>
+  <% end %>
+</ul>
+
+
+<%= link_to 'Back', :back %>
