@@ -1,3 +1,8 @@
 <div class="rain_drop <%= drop.id %>">
-  <%= render 'rain/rain/drops/drop', :drop => drop %>
+
+  <%= raw drop.content %>
+  
+  <% if can_edit_drop?(drop.id) %>
+    [<%= link_to "Edit", edit_rain_drop_path(drop), :rel=>'#puddle', :class=>"edit" %>]
+  <% end %>
 </div>

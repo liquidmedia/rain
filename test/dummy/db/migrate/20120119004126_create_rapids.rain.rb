@@ -8,6 +8,8 @@ class CreateRapids < ActiveRecord::Migration
       t.string :classes
       t.boolean :admin_only, :default => false, :null => false
       t.boolean :user_only, :default => false, :null => false
+      t.string :title
+      t.integer :position
       
       t.timestamps
     end

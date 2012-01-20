@@ -3,17 +3,15 @@ class Rain::AdminController < ApplicationController
   before_filter :rain_crumbs
   
   def index
-    
-    
   end
   
   def drops
-    @drops = ::Rain::Drop.all(:order => :name, :conditions =>  ['type is NULL'])
-    @clouds = ::Rain::Cloud.all(:order => :name)
+    @drops = Rain::Drop.where(:type => nil).order(:name)
+    @clouds = Rain::Cloud.order(:name)
   end
   
   def rapids
-    @rapids = ::Rain::Rapid.root
+    @rapids = Rain::Rapid.root
   end
 
   private

@@ -15,7 +15,12 @@
 </head>
 <body>
 
+<% if @page_title %>
+  <h1><%= @page_title %></h1>
+<% end %>
+
 <%= yield %>
+
 <%= puddle %>
 </body>
 </html>

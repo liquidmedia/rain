@@ -1,3 +1,13 @@
-<div class="rain_drop <%= cloud.name %>">
-  <%= render 'rain/rain/drops/drop', :drop => cloud %>
+<% if cloud.show_title? %>
+  <% @page_title = cloud.title %>
+  <% content_for :page_title, cloud.title %>
+<% end %>
+
+<div class="rain_drop <%= cloud.id %>">
+  
+  <%= raw cloud.content %>
+  
+  <% if can_edit_drop?(cloud.id) %>
+      [<%= link_to "Edit", "/#{cloud.name}/edit",:rel=>'#puddle',:class=>"edit" %>]
+  <% end %>
 </div>

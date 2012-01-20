@@ -7,14 +7,14 @@
     <div class="fullview" style="display:none">
       <h2>Content</h2>
       <strong>Original</strong>
-      <%= link_to 'Revert to this Version', revert_to_rain_cloud_path(@drop, {:version => v.number-1}) %>
+      <%= link_to 'Revert to this Version', revert_to_rain_drop_path(@drop, {:version => v.number-1}) %>
       <div class="original">
-        <%=v.changes['content'][0] rescue "" %>
+        <%= raw v.changes['content'][0] rescue "" %>
       </div>
       <strong>Changes</strong>
-      <%= link_to 'Revert to this Version', revert_to_rain_cloud_path(@drop, {:version => v.number}) %>
+      <%= link_to 'Revert to this Version', revert_to_rain_drop_path(@drop, {:version => v.number}) %>
       <div class="changes">
-        <%=v.changes['content'][1] rescue ""  %>
+        <%= raw v.changes['content'][1] rescue ""  %>
       </div>
     </div>
   </li>

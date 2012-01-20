@@ -45,6 +45,7 @@ module RainCmsHelper
         b << render_rapid(rapid,options.merge({:last_rapid=>(rapid == rapids.last)}))
       end
     end
+    b.target!.html_safe
   end
   
   def render_rapid(rapid,options)
@@ -71,7 +72,7 @@ module RainCmsHelper
         b << "]"
       end
       if rapid.rapids.any?
-        display_mode = "display:none" unless request.request_uri == rapid.link || options[:show_edit]
+        display_mode = "display:none" unless request.fullpath == rapid.link || options[:show_edit]
         b.tag!((options[:element_tag] ? 'ul' : 'span'),:style=>display_mode) do
           rapid.rapids.all(:order => 'position').each do |rapid|
             b << render_rapid(rapid, options.merge({:classes => "nav_expand_open children"}))
@@ -86,7 +87,7 @@ module RainCmsHelper
   end
   
   def application_layouts
-    layouts = Dir.glob(File.join(RAILS_ROOT,'app','views','layouts','*'))
+    layouts = Dir.glob(File.join(Rails.root,'app','views','layouts','*'))
     ['application.html.erb'] + layouts.collect{|layout_file| layout_file.split('/')[-1] unless layout_file =~ /\/_|application/ }.compact
   end
   

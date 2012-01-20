@@ -11,16 +11,7 @@ Rails.application.routes.draw do
         get 'revert_to'
       end
     end
-    match 'clouds/:name/edit' => 'clouds#edit', :as => 'edit_cloud'
 
-    resources :clouds do
-      member do
-        get 'previous'
-        get 'next'
-        get 'history'
-        get 'revert_to'
-      end
-    end
     resources :rapids, :except => [:show]
 
     constraints :format => 'js' do
@@ -28,5 +19,5 @@ Rails.application.routes.draw do
     end
   end
 
-  match '/:id' => 'rain/clouds#cloud', :as => 'clouds'
+  match '/*id' => 'rain/drops#cloud', :as => 'clouds'
 end

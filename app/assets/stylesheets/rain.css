@@ -10,8 +10,8 @@ div#puddle {
 div#puddle div.close {
   background-image:url(rain/close.png);
   position:absolute;
-  right:5px;
-  top:5px;
+  right:20px;
+  top:20px;
   cursor:pointer;
   height:28px;
   width:28px;
@@ -21,18 +21,44 @@ div#puddle div.close {
   background: #ccc;
 }
 
-form.edit_rain_drop a {
+#rain_drop_history {
   color: #2B88D3;
   text-decoration: none;
+  display: inline-block;
+  margin-right: 20px;
+  line-height: 24px;
 }
 
-form.edit_rain_drop a:hover {
+#rain_drop_history:hover {
   text-decoration: underline;
 }
 
-#puddle h1 {
+#puddle h4 {
   font-size: 18px;
   margin: 0 0 0.3em;
   color: #DDD;
 }
 
+#puddle input[type="submit"] {
+  width: 80px;
+  height: 30px;
+  margin-top:10px;
+}
+
+#puddle label {
+  display: inline-block;
+  min-width: 50px;
+  line-height: 24px;
+}
+
+#puddle input[type="text"], #puddle select {
+  min-width: 200px;
+}
+
+#puddle label[for="rain_cloud_user_only"] {
+  margin-right: 20px;
+}
+
+#puddle label[for="rain_cloud_uri"] {
+  text-align: right;
+}

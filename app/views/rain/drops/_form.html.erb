@@ -1,70 +1,65 @@
-<%= form_for form, :html=>{:id=>"edit_#{form.name}_form"} do |f| %>
-  <%=f.hidden_field :name%>
-  <% if f.object.type == 'Rain::Cloud' %>
-    Title:
-    <%=f.text_field :title%>
-    <%=f.check_box :show_title %> Show Title on page?
+<%= form_for form, :url => rain_drop_path(form), :html=>{:id=>"edit_#{form.name}_form"} do |f| %>
+  <%= f.hidden_field :name %>
+  <% if f.object.type == 'Rain::Cloud' %>    
+    <%= f.label :title %>
+    <%= f.text_field :title%>
+    <%= f.check_box :show_title %> <%= f.label :show_title, 'Show Title on page?' %>
     <br />
-    <%=f.select :layout, application_layouts%>
-    <br />
-    URI:
-    <%=f.text_field :uri %><br />
+    <%= f.label :layout %> <%= f.select :layout, application_layouts%>
+    <%= f.label :uri, 'URI' %> <%= f.text_field :uri %><br />
   <% end %>
   
   <% if f.object.versions.length >= 1 %>
-    <% if f.object.type == 'Rain::Cloud' %>
-      <%= link_to "View History",[:history, @drop] %> <br />
-    <% else %>
-      <%= link_to "View History",history_rain_drop_path(f.object) %> <br />
-    <%end%>
+    <%= link_to "View History", history_rain_drop_path(f.object), :target => '_blank', :id => 'rain_drop_history' %>
+    <%= '<br />'.html_safe unless f.object.type == 'Rain::Cloud' %>
   <% end %>
 
-  <%=f.check_box :user_only%> Only visible to logged-in users<br />
-  <%=f.check_box :admin_only%> Only visible to admins<br />
+  <%= f.check_box :user_only%> <%= f.label :user_only, 'Only visible to logged-in users' %>
+  <%= '<br />'.html_safe unless f.object.type == 'Rain::Cloud' %>
+  <%= f.check_box :admin_only%> <%= f.label :admin_only, 'Only visible to admins' %><br />
 
-  <%=f.text_area :content,:class=>"ckeditor" %>
-  <br />
+  <%= f.text_area :content,:class=>"ckeditor" %>
   <%= f.submit "Save", :id=>"edit_#{form.name}_submit" %>
 <% end %>
 
 <script type="text/javascript" charset="utf-8">
     jQuery(function(){
       jQuery('#rain_drop_content').focus();
-      jQuery('#edit_<%=form.name%>_form').submit(function(){
+      jQuery('#edit_<%= form.name%>_form').submit(function(){
         form = jQuery(this);
         cache_breaker = new Date().getTime();
-        // CKEDITOR.instances.<%=form.class.to_s.underscore.gsub('/','_')%>_content.destroy();
-        CKEDITOR.instances.<%=form.class.to_s.underscore.gsub('/','_')%>_content.updateElement();
+        // CKEDITOR.instances.<%= form.class.to_s.underscore.gsub('/','_')%>_content.destroy();
+        CKEDITOR.instances.<%= form.class.to_s.underscore.gsub('/','_')%>_content.updateElement();
         jQuery.post(form.attr('action')+"?no_cache="+cache_breaker,form.serialize(),function(){},'script');
         return false;
       });
       try {
-        CKEDITOR.remove(CKEDITOR.instances.<%=form.class.to_s.underscore.gsub('/','_')%>_content);
+        CKEDITOR.remove(CKEDITOR.instances.<%= form.class.to_s.underscore.gsub('/','_')%>_content);
       } catch(err){
         
       }
       try {
-        CKEDITOR.instances.<%=form.class.to_s.underscore.gsub('/','_')%>_content.destroy();
+        CKEDITOR.instances.<%= form.class.to_s.underscore.gsub('/','_')%>_content.destroy();
       } catch(err){
         
       }
-      CKEDITOR.replace('<%=form.class.to_s.underscore.gsub('/','_')%>_content',
+      CKEDITOR.replace('<%= form.class.to_s.underscore.gsub('/','_')%>_content',
           {
               toolbarStartupExpanded: true,
               toolbar: 'Full',
               toolbar_Full : [
                                 ['Source'],
-                                ['Cut','Copy','Paste','PasteText','PasteFromWord','-','Print', 'SpellChecker', 'Scayt'],
-                                ['Undo','Redo','-','-','SelectAll'],
+                                ['Undo','Redo','-','SelectAll'],
+                                ['Cut','Copy','Paste','PasteText','PasteFromWord','-','SpellChecker', 'Scayt'],
+                                ['Link','Unlink'],
                                 ['Bold','Italic','Underline','Strike','-','Subscript','Superscript'],
                                 ['NumberedList','BulletedList','-','Outdent','Indent','Blockquote'],
-                                ['Link','Unlink'],
                                 ['JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock'],
                                 ['Format','Font','FontSize'],
                                 ['TextColor','BGColor']
                              ],
-              height : '100px',
-              width  : '640px'
+              height : '130px',
+              width  : '630px'
           });
 
     });

@@ -1,4 +1,4 @@
-<% form_for form do |f| %>
+<%= form_for form do |f| %>
   Name: 
   <%=f.text_field :name %><br />
   Link: 
@@ -17,4 +17,4 @@
   <%=f.check_box :admin_only %><br />
   <br />
   <%= f.submit "Save" %>
-<% end%>
+<% end %>

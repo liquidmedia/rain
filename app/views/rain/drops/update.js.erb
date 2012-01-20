@@ -1,5 +1,20 @@
 jQuery('#puddle .close').trigger('click');
 jQuery('#puddle .contentWrap').html('');
-jQuery('.rain_drop.<%=@drop.id%>').effect('highlight',{},1500);
-jQuery('.rain_drop.<%=@drop.id%>').html('<%= escape_javascript(render @drop) %>')
+<% unless request.env['HTTP_REFERER'].match(/\/rain\/admin\/drops$/) %>
+  if (jQuery('.rain_drop.<%=@drop.id%>').size() == 0) {
+    jQuery('.rain_drop').addClass('<%=@drop.id%>');
+  }
+  jQuery('.rain_drop.<%=@drop.id%>').effect('highlight',{},1500);
+  jQuery('.rain_drop.<%=@drop.id%>').html('<%= escape_javascript(render @drop) %>');
+  <% if @drop.class == Rain::Cloud %>
+  if (window.location.pathname != '/' + '<%= @drop.uri %>') {
+    window.location.pathname = '/' + '<%= @drop.uri %>';
+  }
+  <% end %>
+  <% if @drop.show_title? %>
+  else {
+    window.location.reload(); <%# in case title has changed %>
+  }
+  <% end %>
+<% end %>
 
