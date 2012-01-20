@@ -18,8 +18,8 @@ then run rake db:migrate as usual.
 
 * Rain requires jQuery UI.
 
-* IMPORTANT: Rain requires a custom build of jQuery Tools which includes the Apple effect overlay.
-  You can use the version which comes with Rain or build your own from the jQuery Tools website.
+* Rain requires the Apple effect overlay from jQuery Tools. This is included in the file
+  jquery.tools.overlay.apple.min.js.
 
 * Rain requires you to run the helper method 'puddle' somewhere on your layout.
 
