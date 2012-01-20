@@ -17,3 +17,5 @@ gem "jquery-rails"
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
 gem 'vestal_versions', :git => 'https://github.com/teambox/vestal_versions.git', :branch => 'rails3.1'
+gem 'builder'
+gem 'crummy'

@@ -105,6 +105,8 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
+  builder
+  crummy
   jquery-rails
   rain!
   sqlite3
