@@ -7,8 +7,8 @@ require "rain/version"
 Gem::Specification.new do |s|
   s.name        = "rain"
   s.version     = Rain::VERSION
-  s.authors     = ["Dan Williams"]
-  s.email       = ["dan@liquidmedia.ca"]
+  s.authors     = ["Dan Williams", "Jeremie Wood"]
+  s.email       = ["dan@liquidmedia.ca", "jeremie@liquidmedia.ca"]
   s.homepage    = "http://liquidmedia.ca"
   s.summary     = "Quick and easy text editing"
   s.description = "Quick and easy text editing"
@@ -17,6 +17,9 @@ Gem::Specification.new do |s|
   s.test_files = Dir["test/**/*"]
 
   s.add_dependency "rails", ">= 3.2.0.rc2"
+  s.add_dependency "vestal_versions"
+  s.add_dependency "crummy"
+  s.add_dependency "builder"
   # s.add_dependency "jquery-rails"
 
   s.add_development_dependency "sqlite3"

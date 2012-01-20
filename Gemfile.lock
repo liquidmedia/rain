@@ -11,7 +11,10 @@ PATH
   remote: .
   specs:
     rain (0.2.2)
+      builder
+      crummy
       rails (>= 3.2.0.rc2)
+      vestal_versions
 
 GEM
   remote: http://rubygems.org/
@@ -102,8 +105,6 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
-  builder
-  crummy
   jquery-rails
   rain!
   sqlite3
