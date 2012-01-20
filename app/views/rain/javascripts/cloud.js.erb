@@ -1,7 +1,7 @@
 jQuery.ajaxSettings.accepts.html = jQuery.ajaxSettings.accepts.script;
 
 function activate_rain() {
-  jQuery("a[rel]").live('click',function(){
+  jQuery("a[rel=#puddle]").live('click',function(){
     jQuery(this).overlay({
         mask: '#ccc',
         effect: 'apple',
