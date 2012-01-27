@@ -95,7 +95,7 @@ class Rain::DropsController < ApplicationController
     if @drop.new_record? && !is_admin?
       raise ActionController::RoutingError.new("Cloud not found")
     end
-    render '/rain/clouds/_cloud', :locals=>{:cloud=>@drop}, :layout => request.xhr? ? '' : @drop.layout
+    render 'rain/clouds/_cloud', :locals=>{:cloud=>@drop}, :layout => request.xhr? ? '' : @drop.layout
   end
   
   private  
