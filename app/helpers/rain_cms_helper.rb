@@ -88,7 +88,7 @@ module RainCmsHelper
   
   def application_layouts
     layouts = Dir.glob(File.join(Rails.root,'app','views','layouts','*'))
-    ['application.html.erb'] + layouts.collect{|layout_file| layout_file.split('/')[-1] unless layout_file =~ /\/_|application/ }.compact
+    layouts.collect{|layout_file| layout_file.split('/')[-1]}.compact
   end
   
   def drop_structure(drops)
