@@ -1,4 +1,4 @@
-<%= form_for form, :url => rain_drop_path(form), :html=>{:id=>"edit_#{form.name}_form"} do |f| %>
+<%= form_for form, :url => (form.new_record? ? rain_drops_path(form) : rain_drop_path(form)), :html=>{:id=>"edit_#{form.name}_form"} do |f| %>
   <%= f.hidden_field :name %>
   <% if f.object.type == 'Rain::Cloud' %>    
     <%= f.label :title %>
