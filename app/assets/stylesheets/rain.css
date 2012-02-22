@@ -1,4 +1,4 @@
-div#puddle {
+#puddle {
   background-image:url(rain/background.png);
   width:640px;
   height:480px;   
@@ -7,7 +7,7 @@ div#puddle {
   padding:55px;
 }
 
-div#puddle div.close {
+#puddle .close {
   background-image:url(rain/close.png);
   position:absolute;
   right:20px;
@@ -15,10 +15,6 @@ div#puddle div.close {
   cursor:pointer;
   height:28px;
   width:28px;
-}
-
-.nav .current {
-  background: #ccc;
 }
 
 #rain_drop_history {
@@ -53,6 +49,10 @@ div#puddle div.close {
 
 #puddle input[type="text"], #puddle select {
   min-width: 200px;
+}
+
+#puddle input[type="text"] {
+  padding: 1px;
 }
 
 #puddle label[for="rain_cloud_user_only"] {

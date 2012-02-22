@@ -1,6 +1,6 @@
 jQuery.ajaxSettings.accepts.html = jQuery.ajaxSettings.accepts.script;
 
-function activate_rain() {
+jQuery(function () {
   jQuery("a[rel=#puddle]").live('click',function(){
     jQuery(this).overlay({
         mask: '#ccc',
@@ -13,8 +13,4 @@ function activate_rain() {
     });
     return false;
   });
-}
-
-jQuery(function(){
-  activate_rain();
 });

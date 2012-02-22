@@ -23,11 +23,7 @@ then run rake db:migrate as usual.
 
 * Rain requires you to run the helper method 'puddle' somewhere on your layout.
 
-* Rain requires you to include ckeditor, the rain javascript, and the rain stylesheet as follows.
-  This is only necessary if the user is logged in.
-
-  javascript_include_tag 'ckeditor/ckeditor'
-  javascript_include_tag '/rain/javascripts/rain'
-  stylesheet_link_tag 'rain'
+* You will need to include the ckeditor and rain javascript files in your application.js and
+  the rain stylesheet in application.css
 
 TODO: how to customize ckeditor stylesheet to match your site
