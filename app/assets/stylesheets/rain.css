@@ -53,6 +53,7 @@
 
 #puddle input[type="text"] {
   padding: 1px;
+  margin: 0;
 }
 
 #puddle label[for="rain_cloud_user_only"] {
