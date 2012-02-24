@@ -12,9 +12,5 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery.tools.min
-//= require jquery-ui-1.8.17.min
-//= require jquery.tools.overlay.apple.min
-//= require ckeditor/ckeditor
-//= require rain
 //= require_tree .
+//= require rain

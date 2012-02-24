@@ -19,3 +19,10 @@ gem "jquery-rails"
 gem 'vestal_versions', :git => 'https://github.com/teambox/vestal_versions.git', :branch => 'rails3.1'
 gem 'builder'
 gem 'crummy'
+
+# Gems used for precompiling assets
+group :assets do
+  gem 'sass-rails',   '~> 3.2.3'
+  gem 'coffee-rails', '~> 3.2.1'
+  gem 'uglifier', '>= 1.0.3'
+end
