@@ -1,9 +1,10 @@
 class Rain::DropsController < ApplicationController
   include RainCmsHelper
   
-  before_filter :drop,:except=>[:create]
-  before_filter :track_referrer, :only=>[:show, :cloud]
-  before_filter :check_permissions, :except => [:show, :cloud]
+  before_filter :drop, :except => [:create]
+  before_filter :track_referrer, :only => [:cloud]
+  before_filter :check_permissions, :except => [:cloud]
+  skip_before_filter :authenticate, :only => [:cloud]
   
   def check_permissions    
     return true if can_edit_drop?(params[:id].to_i)
