@@ -21,7 +21,7 @@ class Rain::AdminController < ApplicationController
     if action_name == 'index'
       add_crumb 'Rain'
     else
-      add_crumb 'Rain', :action => :index
+      add_crumb 'Rain', rain_root_path
       add_crumb action_name.titleize
     end
   end

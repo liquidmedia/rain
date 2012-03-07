@@ -85,7 +85,7 @@ class Rain::DropsController < ApplicationController
   end
 
   def cloud
-    return head :not_found unless request.format == 'text/html'
+    raise ActionController::RoutingError.new("file not found") unless request.format == 'text/html'
     build_crumbs
 
     if (@drop.admin_only? && !is_admin?) || (@drop.user_only? && !logged_in?)
