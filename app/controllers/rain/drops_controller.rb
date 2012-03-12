@@ -5,6 +5,7 @@ class Rain::DropsController < ApplicationController
   before_filter :track_referrer, :only => [:cloud]
   before_filter :check_permissions, :except => [:cloud]
   skip_before_filter :authenticate, :only => [:cloud]
+  before_filter :authenticate_lite, :only => [:cloud]
   
   def check_permissions    
     return true if can_edit_drop?(params[:id].to_i)
