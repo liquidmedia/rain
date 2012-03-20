@@ -87,7 +87,7 @@ class Rain::DropsController < ApplicationController
   end
 
   def cloud
-    raise ActionController::RoutingError.new("file not found") unless request.format == 'text/html'
+    raise ActionController::RoutingError.new("Rain was unable to find #{request.path}") unless request.format == 'text/html'
     build_crumbs
 
     if (@drop.admin_only? && !is_admin?) || (@drop.user_only? && !logged_in?)
@@ -96,7 +96,7 @@ class Rain::DropsController < ApplicationController
     end
 
     if @drop.new_record? && !is_admin?
-      raise ActionController::RoutingError.new("Cloud not found")
+      raise ActionController::RoutingError.new("Rain was unable to find #{request.path}")
     end
     render 'rain/clouds/_cloud', :locals=>{:cloud=>@drop}, :layout => request.xhr? ? '' : @drop.layout
   end

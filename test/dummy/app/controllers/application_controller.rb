@@ -6,4 +6,8 @@ class ApplicationController < ActionController::Base
   def require_admin
     return true
   end
+
+  def authenticate_lite
+    return true
+  end
 end
