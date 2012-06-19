@@ -25,6 +25,9 @@ then run rake db:migrate as usual.
 * You will need to include the rain javascript in your application.js
   (make sure it is loaded after all the jQuery libraries have been loaded)
 
+* You will need to load CKEditor. See the dummy app for an example. Internet Explorer
+  seems to have problems unless you load it first.
+
 * You will need to include the the rain stylesheet in application.css
 
 TODO: how to customize ckeditor stylesheet to match your site

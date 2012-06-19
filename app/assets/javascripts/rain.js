@@ -1,6 +1,5 @@
 //= require jquery.tools.overlay.apple.min
 //= require_self
-//= require ckeditor/ckeditor
 
 jQuery.ajaxSettings.accepts.html = jQuery.ajaxSettings.accepts.script;
 
@@ -18,5 +17,3 @@ jQuery(function () {
     return false;
   });
 });
-
-var CKEDITOR_BASEPATH = "/assets/ckeditor/";

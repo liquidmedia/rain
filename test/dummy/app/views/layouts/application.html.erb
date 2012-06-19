@@ -2,6 +2,10 @@
 <html>
 <head>
   <title>Dummy</title>
+  <script type="text/javascript">
+    CKEDITOR_BASEPATH = "/assets/ckeditor/";
+  </script>
+  <%= javascript_include_tag "ckeditor/ckeditor" %>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>

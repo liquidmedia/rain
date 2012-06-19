@@ -1,6 +1,8 @@
 module RainCmsHelper
   def can_edit_drop?(drop_id)    
-    is_admin? || (session[:editable_drop_ids] && session[:editable_drop_ids].include?(drop_id))
+    is_admin? ||
+      (@drop && session[:editable_drop_ids] && session[:editable_drop_ids].include?(@drop.id)) ||
+      (session[:editable_drop_ids] && session[:editable_drop_ids].include?(drop_id))
   end
   
   def rain_drop(name="#{controller_name}_#{action_name}", options = {})

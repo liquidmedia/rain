@@ -49,7 +49,7 @@ class Rain::DropsController < ApplicationController
     respond_to do |format|
       if @drop.update_attributes(params[:rain_drop] || params[:rain_cloud])
         flash[:success] = t(:drop_updated)
-        format.html { redirect_to(rain_drop_path(@drop.id)) }
+        format.html { redirect_to "/" }
         format.xml  { head :ok }
         format.js   { render 'rain/drops/update', :layout=>false}
       else

@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   include ApplicationHelper
 
   def require_admin
-    return true
+    return false
   end
 
   def authenticate_lite
