@@ -28,13 +28,7 @@ module RainCmsHelper
   end
   
   def puddle
-    b = Builder::XmlMarkup.new
-
-    b.div(:id=>'puddle') do
-      b.div({:class=>'close'},'') 
-      b.div({:class=>'contentWrap'},'') 
-    end
-    b.target!.html_safe
+    "<div id='puddle'><div class='close'></div><div class='contentWrap'></div></div>".html_safe
   end
   
   def waterfall(rapids=nil,options={})
