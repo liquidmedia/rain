@@ -127,7 +127,7 @@ class Rain::DropsController < ApplicationController
     end
 
     def build_crumbs
-      uri = request.env['REQUEST_URI']
+      uri = request.path
       search_path = ""
       crumbs = uri.split('/').reject{|u| u.blank?}
       crumbs.pop
