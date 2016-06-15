@@ -12,7 +12,11 @@ module RainCmsHelper
     session[:editable_drop_ids] = [] unless session[:editable_drop_ids]
     session[:editable_drop_ids] << drop.id if is_admin? || options[:admin_override]
     session[:editable_drop_ids].uniq!
-    
+
+    if drop.content.blank? && options[:default_content].present?
+      drop.content = options[:default_content]
+    end
+
     if drop.content.present?
       return "" if drop.admin_only? && !is_admin?
       return "" if drop.user_only? && !logged_in?
