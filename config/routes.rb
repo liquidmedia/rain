@@ -1,23 +1,16 @@
 Rails.application.routes.draw do
   namespace :rain do
-    root :to => 'admin#index'
-    match 'admin/rapids' => 'admin#rapids', :as => 'admin_rapids'
-    match 'admin/drops' => 'admin#drops', :as => 'admin_drops'
-    resources :drops do
-      member do
-        get 'previous'
-        get 'next'
-        get 'history'
-        get 'revert_to'
-      end
-    end
+    root :to => 'admin#index', as: 'root'
+    get 'admin/rapids' => 'admin#rapids', :as => 'admin_rapids'
+    get 'admin/drops' => 'admin#drops', :as => 'admin_drops'
+    resources :drops
 
     resources :rapids, :except => [:show]
 
     constraints :format => 'js' do
-      match 'javascripts/rain.js' => 'javascripts#cloud', :as => 'cloud_js'
+      get 'javascripts/rain.js' => 'javascripts#cloud', :as => 'cloud_js'
     end
   end
 
-  match '/*id' => 'rain/drops#cloud', :as => 'clouds'
+  # get '/*id' => 'rain/drops#cloud', :as => 'clouds'
 end

@@ -1,9 +1,7 @@
 module Rain
   class Drop < ActiveRecord::Base
-    versioned
-  
-    scope :drops, where('type != ?', 'Rain::Cloud')
-    scope :clouds, where('type = ?', 'Rain::Cloud')
+    scope :drops, -> { where('type != ?', 'Rain::Cloud') }
+    scope :clouds, -> { where('type = ?', 'Rain::Cloud') }
 
     validates_presence_of :name
     validates_uniqueness_of :name, :scope => :type

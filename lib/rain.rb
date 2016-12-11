@@ -10,7 +10,7 @@ module Rain
     #asset_list = Dir[root_path.join('vendor/assets/javascripts/ckeditor/**', '*.{js,css}')].inject([]) do |list, path|
     #  list << Pathname.new(path).relative_path_from(root_path.join('vendor/assets/javascripts'))
     #end
-    [Pathname('rain.js')]
+    [Pathname('rain.js').to_s]
   end
 
 end

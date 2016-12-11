@@ -17,18 +17,6 @@
   width:28px;
 }
 
-#rain_drop_history {
-  color: #2B88D3;
-  text-decoration: none;
-  display: inline-block;
-  margin-right: 20px;
-  line-height: 24px;
-}
-
-#rain_drop_history:hover {
-  text-decoration: underline;
-}
-
 #puddle h4 {
   font-size: 18px;
   margin: 0 0 0.3em;

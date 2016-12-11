@@ -7,7 +7,7 @@ module RainCmsHelper
   
   def rain_drop(name="#{controller_name}_#{action_name}", options = {})
     pure_name = filter_drop(name)
-    drop = Rain::Drop.find_or_create_by_name(pure_name)
+    drop = Rain::Drop.find_or_create_by(name: pure_name)
     
     session[:editable_drop_ids] = [] unless session[:editable_drop_ids]
     session[:editable_drop_ids] << drop.id if is_admin? || options[:admin_override]
@@ -23,8 +23,8 @@ module RainCmsHelper
       render "/rain/drops/drop", :drop => drop
     else
       if is_admin? || options[:admin_override]
-        b = Builder::XmlMarkup.new.span({:class=>"rain_drop #{drop.id}"}) do |span|
-          span << "Drop '#{name}' is not available. #{link_to 'Click here to create it',rain_drop_path(pure_name),:rel=>"#puddle"}"
+        b = ::Builder::XmlMarkup.new.span({:class=>"rain_drop #{drop.id}"}) do |span|
+          span << "Drop '#{name}' is not available. #{link_to 'Click here to create it',rain_drop_path(pure_name, {back: request.url}),:rel=>"#puddle"}"
         end
         return b.html_safe
       end

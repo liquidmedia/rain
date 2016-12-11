@@ -1,3 +1,5 @@
 test/dummy/tmp
 *.sqlite3
 test/dummy/log
+.bundle
+

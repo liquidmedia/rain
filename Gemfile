@@ -16,13 +16,12 @@ gem "jquery-rails"
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
-gem 'vestal_versions', :git => 'https://github.com/jodosha/vestal_versions.git'
 gem 'builder'
 gem 'crummy'
 
 # Gems used for precompiling assets
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-  gem 'uglifier', '>= 1.0.3'
+  gem 'sass-rails',   '~> 5.0'
+  gem 'coffee-rails', '~> 4.2'
+  gem 'uglifier', '>= 1.3.0'
 end

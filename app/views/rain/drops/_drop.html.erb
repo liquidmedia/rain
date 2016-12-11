@@ -3,6 +3,6 @@
   <%= raw drop.content %>
   
   <% if can_edit_drop?(drop.id) %>
-    [<%= link_to "Edit", edit_rain_drop_path(drop), :rel=>'#puddle', :class=>"edit" %>]
+    [<%= link_to "Edit", edit_rain_drop_path(drop, {back: request.url}), :class=>"drop-edit edit" %>]
   <% end %>
 </div>

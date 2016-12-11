@@ -1,11 +1,11 @@
 class Rain::DropsController < ApplicationController
   include RainCmsHelper
   
-  before_filter :drop, :except => [:create]
-  before_filter :track_referrer, :only => [:cloud]
-  before_filter :check_permissions, :except => [:cloud]
-  skip_before_filter :authenticate, :only => [:cloud]
-  before_filter :authenticate_lite, :only => [:cloud]
+  before_action :drop, :except => [:create]
+  before_action :track_referrer, :only => [:cloud]
+  before_action :check_permissions, :except => [:cloud]
+  skip_before_action :authenticate, :only => [:cloud]
+  before_action :authenticate_lite, :only => [:cloud]
   
   def check_permissions    
     return true if can_edit_drop?(params[:id].to_i)
@@ -13,16 +13,19 @@ class Rain::DropsController < ApplicationController
   end
   
   def new
-    render 'rain/drops/new', :layout=>false
+    @back = params[:back]
+    render 'rain/drops/new'
   end
   
   def edit
-    render 'rain/drops/edit', :layout=>false
+    @back = params[:back]
+    render 'rain/drops/edit'
   end
   
   def show
-    render 'rain/drops/new', :layout => false and return if @drop.new_record?
-    render 'rain/drops/edit', :layout => false
+    @back = params[:back]
+    render 'rain/drops/new' and return if @drop.new_record?
+    render 'rain/drops/edit'
   end
   
   def create
@@ -34,7 +37,7 @@ class Rain::DropsController < ApplicationController
     respond_to do |format|
       if @drop.save
         flash[:success]= t(:drop_created)
-        format.html { redirect_to(session[:rain_referrer]) }
+        format.html { redirect_to(params[:back] || root_path) }
         format.xml  { render :xml => @drop, :status => :created, :location => @drop }
         format.js   { render 'rain/drops/update', :layout=>false}
       else
@@ -47,9 +50,10 @@ class Rain::DropsController < ApplicationController
   
   def update
     respond_to do |format|
+      params.permit!
       if @drop.update_attributes(params[:rain_drop] || params[:rain_cloud])
         flash[:success] = t(:drop_updated)
-        format.html { redirect_to "/" }
+        format.html { redirect_to(params[:back] || root_path) }
         format.xml  { head :ok }
         format.js   { render 'rain/drops/update', :layout=>false}
       else
@@ -64,26 +68,6 @@ class Rain::DropsController < ApplicationController
     @drop.delete
     
     redirect_to rain_admin_drops_path
-  end
-    
-  def history
-    @versions = @drop.versions
-  end
-  
-  def revert_to
-    flash[:notice] = "Reverted to version #{params[:version]}"
-    @drop.revert_to!(params[:version].to_i)
-    redirect_to :back
-  end
-  
-  def previous
-    @drop.revert_to!(@drop.version - 1)
-    redirect_to :back
-  end
-  
-  def next
-    @drop.revert_to!(@drop.version + 1)
-    redirect_to :back
   end
 
   def cloud
